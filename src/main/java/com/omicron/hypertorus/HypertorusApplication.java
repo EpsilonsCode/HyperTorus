@@ -155,7 +155,6 @@ public class HypertorusApplication extends Application {
             public void handle(long l) {
                 if(spin.isSelected())
                 {
-                    System.out.println(cameraAngleXSlider.getValue());
                     double xValue = cameraAngleXSlider.getValue();
                     double yValue = cameraAngleYSlider.getValue();
 
@@ -290,7 +289,6 @@ public class HypertorusApplication extends Application {
 
         generateHyperTorus(r, t, d);
         mainGroup.getChildren().removeIf(c -> c instanceof Sphere);
-        mainGroup.getChildren().add(createSphere(0, 0, 0));
         List<Point4D> l = listOfTorusPoints.stream().filter(point -> Point4D.distance(point.x, point.y, point.z, point.w, A, B, C, D, E) < cutoff).map(point -> Point4D.closestPointOnPlane(point, A, B, C, D, E)).toList();
         for (Point4D p : l)
             mainGroup.getChildren().add(createSphere(p.x, p.y, p.z));
